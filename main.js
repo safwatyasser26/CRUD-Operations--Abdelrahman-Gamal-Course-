@@ -58,7 +58,13 @@ create.onclick = () => {
     if (!title.value || !price.value || !count.value || !category.value) {
         alert('complete fields please');
     } else {
-    products.push(newProduct);
+    if (newProduct.count > 1) {
+        for (let i = 0; i < newProduct.count; i++) {
+            products.push(newProduct);
+        } 
+    } else {
+        products.push(newProduct);
+    }
     localStorage.setItem('products', JSON.stringify(products));
     clearData();
     showData();
